@@ -8,6 +8,10 @@ if ! which go > /dev/null; then
     exit 1
 fi
 
+if [ ! -d "deps" ]; then
+    mkdir deps
+fi
+
 if [ ! -d "deps/oomph" ]; then
     git clone https://github.com/oomph-ac/oomph deps/oomph
 else
