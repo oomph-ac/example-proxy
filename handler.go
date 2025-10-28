@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/df-mc/dragonfly/server/event"
-	"github.com/elliotchance/orderedmap/v2"
 	"github.com/oomph-ac/oconfig"
 	"github.com/oomph-ac/oomph/player"
 	"github.com/oomph-ac/oomph/player/command"
@@ -201,7 +200,7 @@ func (h *OomphHandler) HandlePunishment(ctx *event.Context[*player.Player], dete
 
 }
 
-func (h *OomphHandler) HandleFlag(ctx *event.Context[*player.Player], dtc player.Detection, data *orderedmap.OrderedMap[string, any]) {
+func (h *OomphHandler) HandleFlag(ctx *event.Context[*player.Player], dtc player.Detection) {
 	p := ctx.Val()
 	m := dtc.Metadata()
 

@@ -50,11 +50,6 @@ func NewOomphProcessor(
 	}
 	oomphProcessor.pl.Store(pl)
 	go pl.StartTicking()
-
-	playerIdentifier := pl.Conn().IdentityData().XUID
-	if playerIdentifier == "" {
-		playerIdentifier = pl.Conn().ClientData().SelfSignedID
-	}
 	return oomphProcessor
 }
 
