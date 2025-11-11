@@ -4,11 +4,11 @@ go 1.24.6
 
 require (
 	github.com/cooldogedev/spectrum v0.0.43
-	github.com/df-mc/dragonfly v0.10.8
+	github.com/df-mc/dragonfly v0.10.9
 	github.com/getsentry/sentry-go v0.35.3
 	github.com/oomph-ac/oconfig v0.0.0-20250912013507-a80d378a6595
 	github.com/oomph-ac/oomph v0.0.0-20251002033530-3dd27115da92
-	github.com/sandertv/gophertunnel v1.50.0
+	github.com/sandertv/gophertunnel v1.51.0
 	golang.org/x/exp v0.0.0-20251002181428-27f1f14c8bb9
 )
 
@@ -23,11 +23,11 @@ require (
 	github.com/ethaniccc/float32-cube v0.0.0-20250511224129-7af1f8c4ee12 // indirect
 	github.com/francoispqt/gojay v1.2.13 // indirect
 	github.com/go-gl/mathgl v1.2.0 // indirect
-	github.com/go-jose/go-jose/v4 v4.1.2 // indirect
+	github.com/go-jose/go-jose/v4 v4.1.3 // indirect
 	github.com/golang/snappy v1.0.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/hjson/hjson-go/v4 v4.4.0 // indirect
-	github.com/klauspost/compress v1.18.0 // indirect
+	github.com/klauspost/compress v1.18.1 // indirect
 	github.com/klauspost/cpuid/v2 v2.0.9 // indirect
 	github.com/quic-go/quic-go v0.55.0 // indirect
 	github.com/sandertv/go-raknet v1.14.3-0.20250305181847-6af3e95113d6 // indirect
@@ -38,7 +38,7 @@ require (
 	golang.org/x/crypto v0.43.0 // indirect
 	golang.org/x/mod v0.29.0 // indirect
 	golang.org/x/net v0.46.0 // indirect
-	golang.org/x/oauth2 v0.31.0 // indirect
+	golang.org/x/oauth2 v0.32.0 // indirect
 	golang.org/x/sync v0.17.0 // indirect
 	golang.org/x/sys v0.37.0 // indirect
 	golang.org/x/text v0.30.0 // indirect

@@ -22,6 +22,7 @@ import (
 	"github.com/oomph-ac/oomph/oerror"
 	"github.com/oomph-ac/oomph/player"
 	"github.com/oomph-ac/oomph/utils"
+	"github.com/oomph-ac/oomph/world"
 	"github.com/sandertv/gophertunnel/minecraft"
 	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
 	"github.com/sandertv/gophertunnel/minecraft/resource"
@@ -115,6 +116,10 @@ func main() {
 			packs = newPacks
 		}
 	}
+
+	// Register custom blocks here before calling these two functions.
+	world.FinalizeBlockRegistry()
+	utils.InitializeBlockNameMapping()
 
 	proxy = spectrum.NewSpectrum(
 		server.NewStaticDiscovery(oconfig.Global.RemoteAddress, oconfig.Global.BackupAddress),
