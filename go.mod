@@ -48,3 +48,7 @@ require (
 replace github.com/oomph-ac/oomph => ./deps/oomph
 
 replace github.com/df-mc/dragonfly => ./deps/dragonfly
+
+replace github.com/oomph-ac/oconfig => ./deps/oconfig
+
+replace github.com/cooldogedev/spectrum => ./deps/spectrum
