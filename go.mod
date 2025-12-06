@@ -8,7 +8,7 @@ require (
 	github.com/getsentry/sentry-go v0.35.3
 	github.com/oomph-ac/oconfig v0.0.0-20250912013507-a80d378a6595
 	github.com/oomph-ac/oomph v0.0.0-20251002033530-3dd27115da92
-	github.com/sandertv/gophertunnel v1.51.0
+	github.com/sandertv/gophertunnel v1.51.1
 	golang.org/x/exp v0.0.0-20251002181428-27f1f14c8bb9
 )
 

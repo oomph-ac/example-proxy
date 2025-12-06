@@ -215,7 +215,7 @@ func acceptSession(s *session.Session) {
 	}(s.Client().IdentityData().XUID)
 
 	// Disable auto-login so that Oomph's processor can modify the StartGame data to allow server-authoritative movement.
-	f, err := os.OpenFile(fmt.Sprintf("./logs/%s.log", s.Client().IdentityData().DisplayName), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0744)
+	f, err := os.OpenFile(fmt.Sprintf("logs/%s.log", s.Client().IdentityData().DisplayName), os.O_RDWR|os.O_CREATE|os.O_APPEND, 0744)
 	if err != nil {
 		s.Disconnect("failed to create log file")
 		return
