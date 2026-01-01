@@ -208,6 +208,7 @@ func (h *OomphHandler) HandleFlag(ctx *event.Context[*player.Player], dtc player
 	dtcKey := dtc.Type() + "_" + dtc.SubType()
 	msgTmpl := oconfig.DtcOpts(dtcKey).FlagMsg
 	viol := strconv.FormatFloat(m.Violations, 'f', 2, 64)
+	dataStr := utils.KeyValsToString(extraData)
 
 	// One-pass replace.
 	alertMsg := strings.NewReplacer(
@@ -217,6 +218,7 @@ func (h *OomphHandler) HandleFlag(ctx *event.Context[*player.Player], dtc player
 		"{detection_type}", dtc.Type(),
 		"{detection_subtype}", dtc.SubType(),
 		"{violations}", viol,
+		"{extraData}", dataStr,
 	).Replace(msgTmpl)
 	h.broadcastAlert(alertMsg)
 }
