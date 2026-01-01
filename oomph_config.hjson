@@ -170,6 +170,7 @@
     # - {xuid}: The player's XBOX Live ID.
     # - {violations}: The amount of violations that have been reached on the detection.
     # - {prefix}: The prefix defined in the Oomph configuration.
+    # - {extraData}: The extra data provided for detections
     detections:
     {
         Aim_A:
