@@ -200,7 +200,7 @@ func (h *OomphHandler) HandlePunishment(ctx *event.Context[*player.Player], dete
 
 }
 
-func (h *OomphHandler) HandleFlag(ctx *event.Context[*player.Player], dtc player.Detection) {
+func (h *OomphHandler) HandleFlag(ctx *event.Context[*player.Player], dtc player.Detection, extraData []any) {
 	p := ctx.Val()
 	m := dtc.Metadata()
 

@@ -1,7 +1,7 @@
 {
     # The version of the config file. This is used to ensure that the config file is compatible with the current version of Oomph.
     # DO NOT MODIFY THIS VALUE.
-    version: 3
+    version: 5
 
     # The Spectrum API token used to authenticate with a Spectrum API instance.
     # If you do not know what this is - don't set anything here.
@@ -122,6 +122,12 @@
         # The difference between the client and Oomph's velocity (in blocks) required for Oomph to accept the client's velocity.
         # NOTE: Increasing this above 0.07 may result in movement bypasses.
         velocity_acception_threshold: 0.029999999329447746
+
+        # Should Oomph limit the prediction velocity to a certain limit? This prevents exploiters from setting a large velocity value when exempted to cause crashes or lag.
+        limit_all_velocity: true
+
+        # The maximum allowed velocity in blocks per tick for all players. This is checked per-axis and not the overall velocity.
+        limit_all_velocity_threshold: 10
     }
 
     # Options for configuring combat policies and strictness for Oomph.
@@ -276,6 +282,17 @@
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
             punishment_type: ban
         }
+        Cloud_Proxy:
+        {
+            # The maximum amount of violations that Oomph will allow before taking action for this detection.
+            max_violations: 0
+
+            # The message that will be sent to authorized staff when a player fails this detection.
+            flag_message: "{prefix} §e{player} §6is using a game proxy §7[§cx{violations}§7]"
+
+            # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
+            punishment_type: ban
+        }
         Cloud_Scaffold:
         {
             # The maximum amount of violations that Oomph will allow before taking action for this detection.
@@ -360,6 +377,28 @@
 
             # The message that will be sent to authorized staff when a player fails this detection.
             flag_message: "{prefix} §e{player} §6tried to break blocks using an invalid packet §7[§cx{violations}§7]"
+
+            # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
+            punishment_type: ban
+        }
+        Proxy_A:
+        {
+            # The maximum amount of violations that Oomph will allow before taking action for this detection.
+            max_violations: 10
+
+            # The message that will be sent to authorized staff when a player fails this detection.
+            flag_message: "{prefix} §e{player} §6is likely using a game proxy"
+
+            # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
+            punishment_type: kick
+        }
+        Proxy_B:
+        {
+            # The maximum amount of violations that Oomph will allow before taking action for this detection.
+            max_violations: 1
+
+            # The message that will be sent to authorized staff when a player fails this detection.
+            flag_message: "{prefix} §e{player} §6is connected with a game proxy"
 
             # The type of punishment to be applied when a player reaches the maximum amount of violations for this detection.
             punishment_type: ban
