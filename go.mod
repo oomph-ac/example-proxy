@@ -8,7 +8,7 @@ require (
 	github.com/getsentry/sentry-go v0.35.3
 	github.com/oomph-ac/oconfig v0.0.0-20250912013507-a80d378a6595
 	github.com/oomph-ac/oomph v0.0.0-20251002033530-3dd27115da92
-	github.com/sandertv/gophertunnel v1.51.1
+	github.com/sandertv/gophertunnel v1.52.0
 	golang.org/x/exp v0.0.0-20251002181428-27f1f14c8bb9
 )
 
@@ -52,3 +52,5 @@ replace github.com/df-mc/dragonfly => ./deps/dragonfly
 replace github.com/oomph-ac/oconfig => ./deps/oconfig
 
 replace github.com/cooldogedev/spectrum => ./deps/spectrum
+
+replace github.com/sandertv/gophertunnel => ./deps/gophertunnel

@@ -32,5 +32,11 @@ else
     cd deps/spectrum; git pull; cd ../..;
 fi
 
-go install
+if [ ! -d "deps/gophertunnel" ]; then
+    git clone https://github.com/sandertv/gophertunnel deps/gophertunnel
+else
+    cd deps/gophertunnel; git pull; cd ../..;
+fi
+
+go get
 go mod tidy

@@ -123,8 +123,6 @@ github.com/quic-go/quic-go v0.55.0/go.mod h1:DR51ilwU1uE164KuWXhinFcKWGlEjzys2l8
 github.com/russross/blackfriday v1.5.2/go.mod h1:JO/DiYxRf+HjHt06OyowR9PTA263kcR/rfWxYHBV53g=
 github.com/sandertv/go-raknet v1.14.3-0.20250305181847-6af3e95113d6 h1:ZfK7NCzIDE+dzp5x6NIO4JDLsjsOxi762CNR1Obds2Q=
 github.com/sandertv/go-raknet v1.14.3-0.20250305181847-6af3e95113d6/go.mod h1:/yysjwfCXm2+2OY8mBazLzcxJ3irnylKCyG3FLgUPVU=
-github.com/sandertv/gophertunnel v1.51.1 h1:NTv8Yt8CI6Hg7xNOOP1b7mtqqScK1k+OPBlmxi+tIio=
-github.com/sandertv/gophertunnel v1.51.1/go.mod h1:IhLg93aMPY/rKgB7lKxTzOZ6i11OgkL0WinVs+gMvlI=
 github.com/scylladb/go-set v1.0.2 h1:SkvlMCKhP0wyyct6j+0IHJkBkSZL+TDzZ4E7f7BCcRE=
 github.com/scylladb/go-set v1.0.2/go.mod h1:DkpGd78rljTxKAnTDPFqXSGxvETQnJyuSOQwsHycqfs=
 github.com/segmentio/fasthash v1.0.3 h1:EI9+KE1EwvMLBWwjpRDc+fEM+prwxDYbslddQGtrmhM=
