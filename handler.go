@@ -8,12 +8,11 @@ import (
 	"time"
 
 	"github.com/df-mc/dragonfly/server/event"
-	"github.com/oomph-ac/oconfig"
+	"github.com/oomph-ac/oomph/oconfig"
 	"github.com/oomph-ac/oomph/player"
 	"github.com/oomph-ac/oomph/player/command"
 	"github.com/sandertv/gophertunnel/minecraft/protocol"
 	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
-	"golang.org/x/exp/maps"
 )
 
 var oomphHandler = newOomphHandler()
@@ -240,7 +239,7 @@ func (h *OomphHandler) refreshAlertList() {
 
 	for range t.C {
 		h.pMu.Lock()
-		maps.Clear(h.allowedAlerts)
+		clear(h.allowedAlerts)
 		for _, p := range h.connected {
 			if p.HasPerm(player.PermissionAlerts) && p.ReceiveAlerts && time.Since(p.LastAlert) >= p.AlertDelay {
 				h.allowedAlerts[p.Name()] = p

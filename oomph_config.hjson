@@ -1,11 +1,7 @@
 {
     # The version of the config file. This is used to ensure that the config file is compatible with the current version of Oomph.
     # DO NOT MODIFY THIS VALUE.
-    version: 5
-
-    # The Spectrum API token used to authenticate with a Spectrum API instance.
-    # If you do not know what this is - don't set anything here.
-    spectrum_api_token: spectrum_api_token_here
+    version: 7
 
     # The prefix to be used for Oomph.
     prefix: §l§6o§eo§bm§ep§6h§7§r »
@@ -31,7 +27,7 @@
     # The address the proxy first connects to for the remote server.
     remote_addr: ":20000"
 
-    # The address the proxy will connect to if the inital connection fails to the remote address.
+    # The address the proxy will connect to if the initial connection to the remote address fails.
     backup_addr: ""
 
     # The message players are disconnected with when the proxy is shut down and there is no available reconnect address.
@@ -53,10 +49,10 @@
     resource_opts:
     {
         # The folder where resource packs are stored. If your resource pack requires a content key, list them in a JSON file with a map of the pack UUID to the content key.
-        resource_folder: resources/
+        resource_folder: ""
 
         # Set to true if you require players to download the resource packs stored on the proxy.
-        require_packs: true
+        require_packs: false
     }
 
     # Options for configuring the network settings for Oomph.
