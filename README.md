@@ -1,56 +1,49 @@
-# example-proxy
+# Oomph example proxy
 
-Example Oomph proxy that uses Spectrum to sit in front of a Bedrock server and run the Oomph processing pipeline.
+A standalone Minecraft Bedrock proxy with Oomph's anti-cheat pipeline already wired in. It accepts players on `local_addr`, connects each player to `remote_addr`, and falls back to `backup_addr` if the primary backend is unavailable.
 
-## What this gives you out-of-the-box
-- **Transparent proxy**: Listens on a local address and forwards to your remote/backup server.
-- **Oomph pipeline wired in**: Components and detections are registered and process client/server packets.
-- **Built-in moderator tooling**: Simple `moderators.list` gate for permissions and `/ac` subcommands for alerts, logs, and debugging.
-- **Resource pack support**: Optionally loads server packs and enforces them.
-- **Graceful shutdown**: Broadcasts a transfer to a backup address (if configured) or disconnects with a message.
-- **Operational niceties**: Per-player log files, optional pprof endpoint.
+## Requirements
 
-## Quick start
+- Go 1.26 or newer
+- A Bedrock server that accepts the proxy's backend connections
 
-### Prerequisites
-- Go 1.24+
-- Git (for the update_deps script)
+PocketMine-MP servers must allow self-signed logins (`xbox-auth=false`). Apply the equivalent setting when another server implementation requires authenticated client chains.
 
-### Setup
-1) Obtain the oomph-specific dependencies by running the `.update_deps.sh` script. This script will also install additional dependencies for Oomph and make sure the proxy binary is ready to be compiled.
+## Setup
 
-2) Build the proxy with `go build -o {proxy binary name} -ldflags='-s -w'` and run it `./{proxy binary name}`. It will generate a dummy configuration file which then you would be able to edit.
+1. Clone this repository.
+2. Set `local_addr` and `remote_addr` in `oomph_config.hjson`.
+3. Build and run the proxy:
 
-3) (Optional) Add moderator names to `moderators.list` (one player name per line):
+   ```sh
+   go build -o example-proxy .
+   ./example-proxy
+   ```
 
-```
-YourModeratorIGN
-AnotherMod
-TheNextModHere
-```
+4. Connect Minecraft to `local_addr` instead of connecting directly to the backend server.
 
-## Moderator commands (granted via `moderators.list`)
-- **/ac alerts [true|false|enable|disable|delayMs]**: Enable/disable alerts, or set delay in ms.
-- **/ac logs <player>**: Print the player’s current detections and violation multipliers.
-- **/ac debug <mode>**: Toggle Oomph debug modes. Special cases:
-  - `type_message` or `type_log` switches the debug output sink.
-  - `gmc` sets client-side creative mode when `OOMPH_GAMEMODE_TEST_BECAUSE_DEV` is set.
+To grant Oomph commands to a moderator, add their exact player name to `moderators.list`, one name per line.
 
-## Configuration reference (brief)
-- **Global.LocalAddress**: Address the proxy listens on (e.g., `0.0.0.0:19132`).
-- **Global.RemoteAddress**: Upstream Bedrock server address.
-- **Global.BackupAddress**: Optional `host:port`. On shutdown, online players are transferred here.
-- **Global.ShutdownMessage**: Message shown when disconnecting without a backup.
-- **Global.GCPercent**: Go GC target percentage. Values lower than 100 can cause high CPU; 100 is recommended.
-- **Global.MemThreshold**: Soft memory limit (MB) for the process.
-- **Global.Resource.ResourceFolder**: Folder containing resource packs; `content_keys.json` is supported if present.
-- **Global.Resource.RequirePacks**: Whether to enforce pack downloads.
+## Addresses and shutdown behavior
 
-Alert message templates for detections can be defined via config and support placeholders used by the handler: `{prefix}`, `{player}`, `{xuid}`, `{detection_type}`, `{detection_subtype}`, `{violations}`.
+- `local_addr` is the public listener.
+- `remote_addr` is the primary backend server.
+- `backup_addr` is tried only when a new connection to the primary backend fails.
+- `reconnect_ip` and `reconnect_port` are sent to connected players in a Transfer packet when this proxy shuts down.
+- If `reconnect_ip` is empty or `reconnect_port` is invalid, players are disconnected with `shutdown_message` instead.
 
-## Operational notes
-- **Logs**: Per-player logs are written to `./logs/<player>.log`.
-- **pprof**: Set `PPROF_ENABLED=1` and `PPROF_ADDRESS=host:port` to expose pprof.
+The fallback backend and shutdown transfer target are deliberately separate: the former keeps new logins available, while the latter moves already-connected players to another public listener.
 
-## Advanced/custom integrations
-Basic proxying and Oomph processing are implemented here. For advanced requirements—such as integrating databases, custom punishment/storage backends, dashboards, webhooks, multi-proxy coordination, or bespoke detections—please commission a custom implementation via the Oomph Discord.
+## Included features
+
+- Instant bidirectional packet forwarding through Oomph's native proxy integration
+- Primary-to-backup backend fallback
+- Graceful shutdown transfers
+- Optional resource-pack loading and enforcement
+- Per-player logs in `logs/`
+- Moderator `/ac` commands for alerts, logs, and debugging
+- Optional pprof endpoint
+
+Set `PPROF_ENABLED=1` to enable pprof. It listens on `127.0.0.1:6060` by default; set `PPROF_ADDRESS` to override that address.
+
+Detection alert templates support `{prefix}`, `{player}`, `{xuid}`, `{detection_type}`, `{detection_subtype}`, and `{violations}` placeholders.
