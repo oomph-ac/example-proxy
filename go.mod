@@ -6,7 +6,7 @@ require (
 	github.com/df-mc/dragonfly v0.10.14-0.20260508142332-b4a4d55303f9
 	github.com/getsentry/sentry-go v0.35.3
 	github.com/oomph-ac/oomph v0.0.0-20260713174505-5f95bb887c43
-	github.com/sandertv/gophertunnel v1.57.0
+	github.com/sandertv/gophertunnel v1.57.2-0.20260714084219-654cd5f0bcb4
 )
 
 require (
@@ -58,5 +58,3 @@ require (
 )
 
 replace github.com/df-mc/dragonfly => github.com/oomph-ac/dragonfly v0.0.0-20260702190811-865056f9d47f
-
-replace github.com/sandertv/gophertunnel => github.com/hashimthearab/gophertunnel v1.25.3-0.20260713165240-828896b9c778
