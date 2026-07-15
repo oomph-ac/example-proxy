@@ -172,9 +172,10 @@ func dialBackends(backup string, timeout time.Duration) proxy.DialFunc {
 		for _, address := range backendAddresses(primary, backup) {
 			dialCtx, cancel := context.WithTimeout(ctx, timeout)
 			conn, err := (minecraft.Dialer{
-				IdentityData: identity,
-				ClientData:   client,
-				FlushRate:    -1,
+				IdentityData:        identity,
+				ClientData:          client,
+				KeepXBLIdentityData: true,
+				FlushRate:           -1,
 			}).DialContext(dialCtx, "raknet", address)
 			cancel()
 			if err == nil {
