@@ -5,7 +5,7 @@ go 1.26.0
 require (
 	github.com/df-mc/dragonfly v0.10.14-0.20260508142332-b4a4d55303f9
 	github.com/getsentry/sentry-go v0.35.3
-	github.com/oomph-ac/oomph v0.0.0-20260713174505-5f95bb887c43
+	github.com/oomph-ac/oomph v0.0.0-20260716201756-d5e22ec6b233
 	github.com/sandertv/gophertunnel v1.57.2-0.20260714084219-654cd5f0bcb4
 )
 
@@ -28,6 +28,7 @@ require (
 	github.com/hjson/hjson-go/v4 v4.6.0 // indirect
 	github.com/klauspost/compress v1.18.4 // indirect
 	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
+	github.com/oomph-ac/oomph/deps/proxy v0.1.2 // indirect
 	github.com/pion/datachannel v1.6.0 // indirect
 	github.com/pion/dtls/v3 v3.1.2 // indirect
 	github.com/pion/ice/v4 v4.2.1 // indirect
@@ -57,4 +58,4 @@ require (
 	golang.org/x/time v0.10.0 // indirect
 )
 
-replace github.com/df-mc/dragonfly => github.com/oomph-ac/dragonfly v0.0.0-20260702190811-865056f9d47f
+replace github.com/df-mc/dragonfly => github.com/oomph-ac/dragonfly v0.0.0-20260714052818-ea2fd40ad95e
